@@ -1,4 +1,4 @@
-import random
+import secrets
 
 letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numbers = "0123456789"
@@ -6,11 +6,16 @@ symbols = "!@#$%^&*"
 
 all_characters = letters + numbers + symbols
 
-password_length = int(input("How many characters should the password have? "))
+while True:
+    answer = input("How many characters should the password have? ")
+    if answer.isdigit() and int(answer) >= 8:
+        password_length = int(answer)
+        break
+    print("Please enter a whole number of 8 or more.")
 
 password = ""
 
 for i in range(password_length):
-    password += random.choice(all_characters)
+    password += secrets.choice(all_characters)
 
 print("Generated Password:", password)
